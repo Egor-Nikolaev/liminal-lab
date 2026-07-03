@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LIMINAL · сделай свой слепок</title>
+<style>
+  :root{--bg:#070810;--ink:#e9edf5;--dim:#8b94a6;--line:rgba(150,165,190,.16);--warm:#e7b064}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(120% 80% at 50% -10%,#10131f,#070810);color:var(--ink);
+       font-family:-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;
+       -webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:680px;margin:0 auto;padding:64px 22px 90px}
+  .mark{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dim)}
+  h1{font-size:clamp(30px,7vw,46px);font-weight:600;letter-spacing:-.5px;margin:14px 0 10px;line-height:1.1}
+  .lead{font-size:clamp(16px,4vw,19px);color:#c3cbda;max-width:52ch}
+  .idea{margin:22px 0 40px;padding:18px 20px;border-left:2px solid var(--warm);
+        background:rgba(231,176,100,.05);border-radius:0 10px 10px 0;color:#d6dce8;font-size:15.5px}
+  h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin:38px 0 14px}
+  ol{list-style:none;counter-reset:s}
+  ol li{counter-increment:s;position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line)}
+  ol li:before{content:counter(s);position:absolute;left:0;top:10px;width:28px;height:28px;border-radius:50%;
+       border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+       font-size:13px;color:var(--warm)}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 6px}
+  a.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:12px;
+        text-decoration:none;font-weight:600;font-size:15px;transition:.2s}
+  a.primary{background:var(--warm);color:#1a1206}
+  a.primary:hover{filter:brightness(1.08)}
+  a.ghost{border:1px solid var(--line);color:var(--ink)}
+  a.ghost:hover{border-color:var(--warm);color:var(--warm)}
+  .note{font-size:13px;color:var(--dim);margin-top:10px}
+  pre{margin-top:14px;background:#0c0e18;border:1px solid var(--line);border-radius:12px;
+      padding:16px;overflow:auto;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#c7cfdd;
+      max-height:280px;line-height:1.55}
+  footer{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+  footer a{color:var(--warm);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">LIMINAL · Kaa-Khem</div>
+  <h1>Сделай свой слепок состояния</h1>
+  <p class="lead">Возьми то, что чувствуешь сейчас, и преврати в карточку с визуалом и звуком. Сохрани и посмотри через время, кем ты был.</p>
+
+  <div class="idea">Я перестал бороться со своими состояниями и начал их фиксировать. Каждое становится карточкой. Это не лечение и не дневник текстом, это зеркало для самопонимания. Собрал в Claude Code. Отдаю шаблон, собери свой.</div>
+
+  <h2>Как это работает</h2>
+  <ol>
+    <li>Забери шаблон ниже (это обычный текст с промптом внутри).</li>
+    <li>Открой Claude, вставь шаблон и добавь свой текст: пару строк дневника или просто что на душе.</li>
+    <li>Claude вернёт один HTML-файл. Открой в браузере, это твоя карточка: картинка и звук. Сохрани на память или запиши в сторис.</li>
+  </ol>
+  <p class="note">Минута, бесплатно, без кода. Ничего никуда не уходит, всё остаётся у тебя.</p>
+
+  <div class="btns">
+    <a class="btn primary" href="slepok-template.md" download>↓ Забрать шаблон .md</a>
+    <a class="btn ghost" href="https://egor-nikolaev.github.io/liminal-atlas/" target="_blank" rel="noopener">Посмотреть 58 моих карточек →</a>
+  </div>
+
+  <h2>Что внутри шаблона</h2>
+  <pre id="tpl">загрузка…</pre>
+
+  <footer>
+    LIMINAL — открытый инструмент самопонимания. Автор: Kaa-Khem / cooprndm.<br>
+    Разверни свой, меняй под себя, делись. <a href="https://egor-nikolaev.github.io/liminal-atlas/" target="_blank" rel="noopener">Основной сайт со всеми состояниями</a>.
+  </footer>
+</div>
+<script>
+fetch('slepok-template.md').then(r=>r.text()).then(t=>{document.getElementById('tpl').textContent=t;})
+  .catch(()=>{document.getElementById('tpl').textContent='Открой файл slepok-template.md кнопкой выше.';});
+</script>
+</body>
+</html>
